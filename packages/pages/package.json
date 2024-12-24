@@ -3,9 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "rsbuild dev --open --env-mode development",
-    "build": "rsbuild build",
-    "preview": "rsbuild preview"
+    "dev": "nx rsbuild:dev --open --env-mode development",
+    "build": "nx rsbuild:build",
+    "preview": "nx rsbuild:preview"
   },
   "dependencies": {
     "element-plus": "2.9.1",
