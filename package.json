@@ -2,8 +2,8 @@
   "name": "mpt",
   "version": "0.0.1",
   "scripts": {
-    "dev": "pnpm --parallel --stream -r run dev",
-    "build": "pnpm --stream -r run build"
+    "dev": "npx nx run-many -t  dev",
+    "build": "npx nx run-many -t build"
   },
   "devDependencies": {
     "@rsbuild/core": "1.1.8",

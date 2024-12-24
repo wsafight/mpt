@@ -21,7 +21,14 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
 
-  packages/assemble: {}
+  packages/assemble:
+    dependencies:
+      '@mpt/layouts':
+        specifier: workspace:*
+        version: link:../layouts
+      '@mpt/pages':
+        specifier: workspace:*
+        version: link:../pages
 
   packages/layouts: {}
 
