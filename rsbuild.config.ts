@@ -28,13 +28,18 @@ const injectHtmlTags = () => [
   {
     tag: "script",
     append: false,
+    attrs: { src: process.env.VUE_ROUTER_JS_URL, crossorigin: "anonymous" },
+  },
+  {
+    tag: "script",
+    append: false,
     attrs: { src: process.env.ELEMENT_JS_URL, crossorigin: "anonymous" },
   },
 ];
 
 export default defineConfig({
   source: {
-    entry: buildPages(["parent", "sale"]),
+    entry: buildPages(["demo1", "demo2"]),
   },
   plugins: [pluginVue(), pluginHtmlMinifierTerser()],
   html: {
@@ -44,6 +49,7 @@ export default defineConfig({
   output: {
     externals: {
       vue: "Vue",
+      'vue-router': 'VueRouter',
       "element-plus": "ElementPlus",
     },
   },
