@@ -1,0 +1,21 @@
+{
+  "name": "rsbuild-project-delete",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev --open --env-mode development",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "element-plus": "2.9.1",
+    "vue": "3.5.13",
+    "vue-router": "4.5.0"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "1.1.8",
+    "@rsbuild/plugin-vue": "1.0.5",
+    "rsbuild-plugin-html-minifier-terser": "1.1.1",
+    "typescript": "5.7.2"
+  }
+}
