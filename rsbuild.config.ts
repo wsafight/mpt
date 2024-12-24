@@ -44,7 +44,7 @@ export default defineConfig({
   output: {
     externals: {
       vue: "Vue",
-      "element-ui": "ELEMENT",
+      "element-plus": "ElementPlus",
     },
   },
 });
