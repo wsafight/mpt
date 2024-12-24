@@ -1,5 +1,7 @@
 {
-    "scripts": {
-        "dev": "node index.js"
-    }
+  "name": "@mpt/layouts",
+  "scripts": {
+    "dev": "tsc --module=umd index.ts"
+  },
+  "main": "index.js"
 }

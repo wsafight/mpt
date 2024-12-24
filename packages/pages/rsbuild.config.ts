@@ -1,7 +1,7 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
-import { buildPages, injectHtmlTags } from "./rsbuild.tool";
+import { buildPages, injectHtmlTags, isProduction } from "./rsbuild.tool";
 
 
 export default defineConfig({
@@ -23,6 +23,9 @@ export default defineConfig({
       vue: "Vue",
       "vue-router": "VueRouter",
       "element-plus": "ElementPlus",
+      ...(isProduction && {
+        "@mpt/layouts": "mptLayouts",
+      }),
     },
   },
 });
