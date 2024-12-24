@@ -1,6 +1,14 @@
-console.log("开始组装");
-import fs, {constants} from "fs";
+import { rmdirSync, cpSync, copyFileSync, constants } from "fs";
 
-fs.cpSync("../pages/dist", "./dist", { recursive: true });
+const assemble = () => {
+  console.log("开始组装");
+  rmdirSync("./dist", {recursive: true});
+  cpSync("../pages/dist", "./dist", { recursive: true });
+  copyFileSync(
+    "../layouts/src/index.js",
+    "./dist/static/js/index.js",
+    constants.COPYFILE_EXCL
+  );
+};
 
-fs.copyFileSync('../layouts/src/index.js', './dist/static/js/index.js', constants.COPYFILE_EXCL)
+assemble();

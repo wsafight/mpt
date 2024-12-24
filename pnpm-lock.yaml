@@ -14,6 +14,9 @@ importers:
       '@rsbuild/core':
         specifier: 1.1.8
         version: 1.1.8
+      '@types/node':
+        specifier: 22.10.2
+        version: 22.10.2
       nx:
         specifier: 20.3.0
         version: 20.3.0

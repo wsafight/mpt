@@ -21,11 +21,11 @@ const injectHtmlTags = (envUrls: string[]) => {
   if (isProduction) {
     workSpaces = [
       {
-        append: true,
+        append: false,
         tag: "script",
         attrs: {
           crossorigin: "anonymous",
-          href: "./js/index.js",
+          href: "/static/js/index.js",
           rel: "stylesheet",
         },
       },
