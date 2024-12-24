@@ -1,3 +1,12 @@
 {
-    
+  "name": "mpt",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "pnpm --parallel --stream -r run dev",
+    "build": "pnpm --stream -r run build"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "1.1.8",
+    "typescript": "5.7.2"
+  }
 }

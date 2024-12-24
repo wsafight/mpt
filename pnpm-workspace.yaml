@@ -1,0 +1,4 @@
+packages:
+  - packages/layouts
+  - packages/pages
+  - packages/assemble
