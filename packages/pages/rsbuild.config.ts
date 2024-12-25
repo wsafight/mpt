@@ -6,7 +6,7 @@ import { buildPages, injectHtmlTags, isProduction } from "./rsbuild.tool";
 
 export default defineConfig({
   source: {
-    entry: buildPages(["demo1", "demo2"]),
+    entry: buildPages(["index", "demo1", "demo2"]),
   },
   plugins: [pluginVue(), pluginHtmlMinifierTerser()],
   html: {
