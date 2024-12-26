@@ -1,4 +1,3 @@
-import { layout } from '@mpt/layouts';
 import ElementPlus from 'element-plus';
 import { createApp } from 'vue';
 import {
@@ -9,13 +8,10 @@ import {
 import App from './App.vue';
 import './index.css';
 
-const a = '123';
-
 export const startup = (routes: Readonly<RouteRecordRaw[]>) => {
   const router = createRouter({
     routes,
     history: createWebHashHistory(),
   });
   createApp(App).use(ElementPlus).use(router).mount('#root');
-  layout();
 };
