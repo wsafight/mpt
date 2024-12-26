@@ -10,7 +10,7 @@ export default defineConfig({
     entry: buildPages(["index", "demo1", "demo2"]),
   },
   server: {
-    base:  '/mpt',
+    base: '/mpt',
   },
   plugins: [
     pluginVue(),

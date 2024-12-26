@@ -12,6 +12,8 @@ export default defineConfig({
     },
   ],
   output: {
-    target: 'web'
+    target: "web",
+    externals: {},
+    minify: isProduction,
   },
 });

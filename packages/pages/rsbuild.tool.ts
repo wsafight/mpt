@@ -18,22 +18,7 @@ const getTagTypeFromEnvUrl = (url: string): 'css' | 'js' => {
 
 // Inject asset from the `public` directory.
 const injectHtmlTags = (envUrls: string[]) => {
-  let workSpaces: HtmlTagDescriptor[] = [];
-
-  if (isProduction) {
-    workSpaces = [
-      {
-        append: false,
-        tag: 'script',
-        attrs: {
-          crossorigin: 'anonymous',
-          src: '/block.js',
-        },
-      },
-    ];
-  }
-
-  return envUrls.reduce((tags: HtmlTagDescriptor[], envUrl: string) => {
+  const globalTags = envUrls.reduce((tags: HtmlTagDescriptor[], envUrl: string) => {
     const tagType = getTagTypeFromEnvUrl(envUrl);
     tags.push({
       append: false,
@@ -51,7 +36,21 @@ const injectHtmlTags = (envUrls: string[]) => {
       },
     });
     return tags;
-  }, workSpaces);
+  }, []);
+  let workSpaceTags: HtmlTagDescriptor[] = [];
+  if (isProduction) {
+    workSpaceTags = [
+      {
+        append: false,
+        tag: 'script',
+        attrs: {
+          crossorigin: 'anonymous',
+          src: 'https://wsafight.github.io/mpt/block.js',
+        },
+      },
+    ];
+  }
+  return globalTags.concat(workSpaceTags);
 };
 
 export { isProduction, buildPages, injectHtmlTags };
