@@ -9,6 +9,9 @@ export default defineConfig({
   source: {
     entry: buildPages(["index", "demo1", "demo2"]),
   },
+  server: {
+    base: '/mpt',
+  },
   plugins: [
     pluginVue(),
     pluginHtmlMinifierTerser(),
