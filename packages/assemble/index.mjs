@@ -1,8 +1,11 @@
-import { rmdirSync, cpSync, copyFileSync, constants } from "fs";
+import { rmdirSync, cpSync, existsSync, copyFileSync, constants } from "fs";
 
 const assemble = () => {
   console.log("开始组装");
-  rmdirSync("./dist", {recursive: true});
+  // 如果文件存在，删除文件
+  if (existsSync("./dist")) {
+    rmdirSync("./dist", { recursive: true });
+  }
   cpSync("../pages/dist", "./dist", { recursive: true });
   // copyFileSync(
   //   "../layouts/src/index.js",
