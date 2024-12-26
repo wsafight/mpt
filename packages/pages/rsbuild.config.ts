@@ -3,6 +3,7 @@ import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 import { pluginCssMinimizer } from "@rsbuild/plugin-css-minimizer";
 import { pluginImageCompress } from "@rsbuild/plugin-image-compress";
+import { pluginAssetsRetry } from '@rsbuild/plugin-assets-retry';
 import { buildPages, injectHtmlTags, isProduction, config } from "./rsbuild.tool";
 
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
     pluginHtmlMinifierTerser(),
     pluginCssMinimizer(),
     pluginImageCompress(),
+    pluginAssetsRetry()
   ],
   html: {
     template: "./static/index.html",
@@ -27,6 +29,9 @@ export default defineConfig({
       "ELEMENT_JS_URL",
     ]),
     inject: "body",
+  },
+  performance: {
+    removeConsole: true,
   },
   output: {
     // 是否开启内联脚本，开启后会将所有脚本内联到 html 中

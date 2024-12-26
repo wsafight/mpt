@@ -20,6 +20,7 @@
     "@rsbuild/plugin-vue": "1.0.5",
     "rsbuild-plugin-html-minifier-terser": "1.1.1",
     "@rsbuild/plugin-css-minimizer": "1.0.2",
-    "@rsbuild/plugin-image-compress": "1.1.0"
+    "@rsbuild/plugin-image-compress": "1.1.0",
+    "@rsbuild/plugin-assets-retry": "1.0.7"
   }
 }
