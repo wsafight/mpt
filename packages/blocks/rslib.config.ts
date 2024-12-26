@@ -12,6 +12,10 @@ export default defineConfig({
     },
   ],
   output: {
+    filenameHash: !isProduction,
+    filename: {
+      js: isProduction ? "[name].[hash].js" : "[name].js",
+    },
     target: "web",
     externals: {},
     minify: isProduction,

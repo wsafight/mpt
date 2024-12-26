@@ -1,17 +1,62 @@
-import { rmdirSync, cpSync, existsSync, copyFileSync, constants } from "fs";
+import {
+  readdirSync,
+  rmSync,
+  cpSync,
+  existsSync,
+  copyFileSync,
+  constants,
+  readFileSync,
+  writeFileSync,
+} from "fs";
+import { join } from "path";
 
+const __dirname = import.meta.dirname;
+
+const targetDir = join(__dirname, "../../dist");
+
+const removeDistDir = () => {
+  if (!existsSync(targetDir)) {
+    return;
+  }
+  rmSync(targetDir, { recursive: true });
+};
+
+const copyPageFiles = () => {
+  cpSync(join(__dirname, "../pages/dist"), targetDir, { recursive: true });
+};
+
+// 组装 mpt 文件
 const assemble = () => {
   console.log("开始组装");
   // 如果文件存在，删除文件
-  if (existsSync("../../dist")) {
-    rmdirSync("../../dist", { recursive: true });
-  }
-  cpSync("../pages/dist", "../../dist", { recursive: true });
+  removeDistDir();
+
+  // 拷贝页面文件
+  copyPageFiles();
+
+  // 处理 blocks
+  const blockPath = join(__dirname, "../blocks/dist");
+  // 查找 hash js 文件
+  const files = readdirSync(blockPath);
+  const blockjs = files.find((file) => file.endsWith(".js"));
+
   copyFileSync(
-    "../blocks/dist/index.js",
-    "../../dist/block.js",
+    join(blockPath, blockjs),
+    join(__dirname, `../../dist/${blockjs}`),
     constants.COPYFILE_EXCL
   );
+
+  const htmls = readdirSync(targetDir).filter((file) => file.endsWith(".html"));
+  console.log(htmls);
+  htmls.forEach((html) => {
+    const htmlPath = join(targetDir, html);
+    const content = readFileSync(htmlPath, "utf-8");
+    const newContent = content.replace(
+      `inject="block.js"`,
+      `src="/mpt/${blockjs}"`
+    );
+    writeFileSync(htmlPath, newContent);
+  });
 };
 
 assemble();

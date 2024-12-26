@@ -5,6 +5,7 @@ import { pluginCssMinimizer } from "@rsbuild/plugin-css-minimizer";
 import { pluginImageCompress } from "@rsbuild/plugin-image-compress";
 import { buildPages, injectHtmlTags, isProduction } from "./rsbuild.tool";
 
+
 export default defineConfig({
   source: {
     entry: buildPages(["index", "demo1", "demo2"]),

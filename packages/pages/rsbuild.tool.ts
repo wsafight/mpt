@@ -45,7 +45,7 @@ const injectHtmlTags = (envUrls: string[]) => {
         tag: 'script',
         attrs: {
           crossorigin: 'anonymous',
-          src: 'https://wsafight.github.io/mpt/block.js',
+          inject: 'block.js',
         },
       },
     ];
