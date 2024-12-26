@@ -9,10 +9,21 @@ import {
   writeFileSync,
 } from "fs";
 import { join } from "path";
+import { findUpSync } from "find-up";
 
 const __dirname = import.meta.dirname;
 
 const targetDir = join(__dirname, "../../dist");
+
+const config = findUpSync("mpt.config.json");
+
+if (!config) {
+  throw new Error("未找到 mpt.config.json");
+}
+
+const json = readFileSync(config, "utf-8");
+
+const serveBase = JSON.parse(json)?.base;
 
 const removeDistDir = () => {
   if (!existsSync(targetDir)) {
@@ -53,7 +64,8 @@ const assemble = () => {
     const content = readFileSync(htmlPath, "utf-8");
     const newContent = content.replace(
       `inject="block.js"`,
-      `src="/mpt/${blockjs}"`
+      //  TODO 判断 / 结尾
+      `src="${serveBase}/${blockjs}"`
     );
     writeFileSync(htmlPath, newContent);
   });

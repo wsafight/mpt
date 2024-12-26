@@ -4,9 +4,11 @@
   "packageManager": "pnpm@9.12.3",
   "scripts": {
     "dev": "npx nx run-many -t  dev",
-    "build": "npx nx run-many -t build"
+    "build": "npx nx run-many -t build",
+    "preview": "npx nx run-many -t preview"
   },
   "devDependencies": {
+    "find-up": "7.0.0",
     "@biomejs/biome": "1.9.4",
     "@rsbuild/core": "1.1.8",
     "typescript": "5.7.2",

@@ -14,7 +14,7 @@
       "dist"
     ],
     "scripts": {
-      "dev": "rslib build --env-mode development",
+      "dev": "rslib build --watch --env-mode development",
       "build": "rslib build --env-mode production",
       "check": "biome check --write",
       "format": "biome format --write"

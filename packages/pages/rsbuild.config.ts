@@ -4,14 +4,26 @@ import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 import { pluginCssMinimizer } from "@rsbuild/plugin-css-minimizer";
 import { pluginImageCompress } from "@rsbuild/plugin-image-compress";
 import { buildPages, injectHtmlTags, isProduction } from "./rsbuild.tool";
+import { findUpSync } from "find-up";
+import { readFileSync } from "fs";
 
+const config = findUpSync("mpt.config.json");
+
+if (!config) {
+  throw new Error("未找到 mpt.config.json");
+}
+
+const json = readFileSync(config, "utf-8");
+
+const serveBase = JSON.parse(json)?.base;
+console.log("serveBase", serveBase);
 
 export default defineConfig({
   source: {
     entry: buildPages(["index", "demo1", "demo2"]),
   },
   server: {
-    base: '/mpt',
+    base: serveBase,
   },
   plugins: [
     pluginVue(),
@@ -27,7 +39,7 @@ export default defineConfig({
       "VUE_ROUTER_JS_URL",
       "ELEMENT_JS_URL",
     ]),
-    inject: 'body',
+    inject: "body",
   },
   output: {
     // 是否开启内联脚本，开启后会将所有脚本内联到 html 中
