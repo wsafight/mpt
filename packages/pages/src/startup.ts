@@ -1,5 +1,5 @@
-import ElementPlus from 'element-plus';
 import { createApp } from 'vue';
+import ElementPlus from 'element-plus';
 import {
   type RouteRecordRaw,
   createRouter,
@@ -13,5 +13,5 @@ export const startup = (routes: Readonly<RouteRecordRaw[]>) => {
     routes,
     history: createWebHashHistory(),
   });
-  createApp(App).use(ElementPlus).use(router).mount('#root');
+  createApp(App).use(ElementPlus).use(router).mount('#swup');
 };
