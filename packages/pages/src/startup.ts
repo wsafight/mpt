@@ -13,5 +13,5 @@ export const startup = (routes: Readonly<RouteRecordRaw[]>) => {
     routes,
     history: createWebHashHistory(),
   });
-  createApp(App).use(ElementPlus).use(router).mount('#swup');
+  createApp(App).use(ElementPlus).use(router).mount('#root');
 };
