@@ -9,21 +9,16 @@ import {
   writeFileSync,
 } from "fs";
 import { join } from "path";
-import { findUpSync } from "find-up";
 
 const __dirname = import.meta.dirname;
 
 const targetDir = join(__dirname, "../../dist");
 
-const config = findUpSync("mpt.config.json");
+const configStr = readFileSync(join(__dirname, '../../mpt.config.json') , "utf-8");
+const config = JSON.parse(configStr);
 
-if (!config) {
-  throw new Error("未找到 mpt.config.json");
-}
 
-const json = readFileSync(config, "utf-8");
-
-const serveBase = JSON.parse(json)?.base;
+const serveBase = config?.base;
 
 const removeDistDir = () => {
   if (!existsSync(targetDir)) {

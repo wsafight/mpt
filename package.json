@@ -8,7 +8,6 @@
     "preview": "npx nx run-many -t preview"
   },
   "devDependencies": {
-    "find-up": "7.0.0",
     "@biomejs/biome": "1.9.4",
     "@rsbuild/core": "1.1.8",
     "typescript": "5.7.2",

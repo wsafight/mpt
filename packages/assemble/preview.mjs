@@ -1,19 +1,11 @@
-import { findUpSync } from "find-up";
-import { readFileSync } from "fs";
+import { readFileSync } from "node:fs";
 console.log("preview, 主要处理服务器 base");
 
-const config = findUpSync("mpt.config.json");
-
-if (!config) {
-  throw new Error("未找到 mpt.config.json");
-}
-
-const json = readFileSync(config, "utf-8");
-
-const serveBase= JSON.parse(json)?.base;
+const configStr = readFileSync(join(__dirname, '../../mpt.config.json') , "utf-8");
+const config = JSON.parse(configStr);
 
 // TODO 调整路径 
-if (serveBase && serveBase !== '/') {
+if (config.base && config.base !== '/') {
 }
 
 // 开启服务器

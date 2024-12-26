@@ -1,29 +1,22 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { defineConfig } from "@rsbuild/core";
 import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 import { pluginCssMinimizer } from "@rsbuild/plugin-css-minimizer";
 import { pluginImageCompress } from "@rsbuild/plugin-image-compress";
 import { buildPages, injectHtmlTags, isProduction } from "./rsbuild.tool";
-import { findUpSync } from "find-up";
-import { readFileSync } from "fs";
 
-const config = findUpSync("mpt.config.json");
 
-if (!config) {
-  throw new Error("未找到 mpt.config.json");
-}
-
-const json = readFileSync(config, "utf-8");
-
-const serveBase = JSON.parse(json)?.base;
-console.log("serveBase", serveBase);
+const configStr = readFileSync(join(__dirname, '../../mpt.config.json') , "utf-8");
+const config = JSON.parse(configStr);
 
 export default defineConfig({
   source: {
     entry: buildPages(["index", "demo1", "demo2"]),
   },
   server: {
-    base: serveBase,
+    base: config.base,
   },
   plugins: [
     pluginVue(),
