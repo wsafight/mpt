@@ -6,6 +6,7 @@
     "build": "npx nx run-many -t build"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@rsbuild/core": "1.1.8",
     "typescript": "5.7.2",
     "nx": "20.3.0",

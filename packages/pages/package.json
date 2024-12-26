@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "nx rsbuild:dev --open --env-mode development",
     "build": "nx rsbuild:build",
-    "preview": "nx rsbuild:preview"
+    "preview": "nx rsbuild:preview",
+    "check": "biome check --write",
+    "format": "biome format --write"
   },
   "dependencies": {
     "element-plus": "2.9.1",

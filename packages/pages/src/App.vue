@@ -1,6 +1,6 @@
 <script>
 import { RouterView } from 'vue-router';
-export default {}
+export default {};
 </script>
 <template>
     <RouterView />

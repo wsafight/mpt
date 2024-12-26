@@ -1,4 +1,4 @@
-import { startup } from "../startup";
-import routes from "./routes";
+import { startup } from '../startup';
+import routes from './routes';
 
-startup(routes)
+startup(routes);

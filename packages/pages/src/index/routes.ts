@@ -1,9 +1,9 @@
-import A from "./A.vue";
+import A from './A.vue';
 
 export default [
   {
-    path: "/",
-    meta: { title: "a" },
+    path: '/',
+    meta: { title: 'a' },
     component: A,
-  }
+  },
 ];
