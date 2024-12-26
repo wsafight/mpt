@@ -43,7 +43,7 @@ importers:
         version: 0.5.1
     devDependencies:
       '@rslib/core':
-        specifier: ^0.2.2
+        specifier: 0.2.2
         version: 0.2.2(typescript@5.7.2)
 
   packages/layouts: {}
