@@ -27,8 +27,7 @@ const injectHtmlTags = (envUrls: string[]) => {
         tag: 'script',
         attrs: {
           crossorigin: 'anonymous',
-          href: '/static/js/index.js',
-          rel: 'stylesheet',
+          src: '/block.js',
         },
       },
     ];

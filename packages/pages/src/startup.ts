@@ -7,6 +7,13 @@ import {
 } from 'vue-router';
 import App from './App.vue';
 import './index.css';
+import { axios } from '@mpt/blocks';
+
+console.log(axios);
+
+axios.get('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
+  console.log(response.data);
+})
 
 export const startup = (routes: Readonly<RouteRecordRaw[]>) => {
   const router = createRouter({

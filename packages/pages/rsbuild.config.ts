@@ -10,7 +10,7 @@ export default defineConfig({
     entry: buildPages(["index", "demo1", "demo2"]),
   },
   server: {
-    base: '/mpt',
+    base:  '/mpt',
   },
   plugins: [
     pluginVue(),
@@ -41,6 +41,7 @@ export default defineConfig({
       "element-plus": "ElementPlus",
       ...(isProduction && {
         "@mpt/layouts": "mptLayouts",
+        "@mpt/blocks": "mptBlocks",
       }),
     },
   },

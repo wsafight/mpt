@@ -10,10 +10,12 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@mpt/layouts": "workspace:*",
+    "@mpt/blocks": "workspace:*",
     "element-plus": "2.9.1",
     "vue": "3.5.13",
     "vue-router": "4.5.0",
-    "@mpt/layouts": "workspace:*"
+    "redaxios": "0.5.1"
   },
   "devDependencies": {
     "@rsbuild/plugin-vue": "1.0.5",
