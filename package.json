@@ -1,6 +1,7 @@
 {
   "name": "mpt",
   "version": "0.0.1",
+  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "dev": "npx nx run-many -t  dev",
     "build": "npx nx run-many -t build"

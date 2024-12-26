@@ -6,7 +6,7 @@ const assemble = () => {
   if (existsSync("./dist")) {
     rmdirSync("./dist", { recursive: true });
   }
-  cpSync("../pages/dist", "./dist", { recursive: true });
+  cpSync("../pages/dist", "../../dist", { recursive: true });
   // copyFileSync(
   //   "../layouts/src/index.js",
   //   "./dist/static/js/index.js",
