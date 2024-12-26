@@ -1,15 +1,9 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { defineConfig } from "@rsbuild/core";
 import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 import { pluginCssMinimizer } from "@rsbuild/plugin-css-minimizer";
 import { pluginImageCompress } from "@rsbuild/plugin-image-compress";
-import { buildPages, injectHtmlTags, isProduction } from "./rsbuild.tool";
-
-
-const configStr = readFileSync(join(__dirname, '../../mpt.config.json') , "utf-8");
-const config = JSON.parse(configStr);
+import { buildPages, injectHtmlTags, isProduction, config } from "./rsbuild.tool";
 
 export default defineConfig({
   source: {

@@ -6,8 +6,8 @@ import {
   createWebHashHistory,
 } from 'vue-router';
 import App from './App.vue';
-import './index.css';
 import { axios } from '@mpt/blocks';
+import './index.css';
 
 console.log(axios);
 

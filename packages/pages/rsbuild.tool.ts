@@ -1,4 +1,9 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { HtmlTagDescriptor } from '@rsbuild/core';
+
+const configStr = readFileSync(join(__dirname, '../../mpt.config.json') , "utf-8");
+export const config = JSON.parse(configStr);
 
 const buildPages = (pages: string[]) => {
   return pages.reduce((entry, pageName) => {
@@ -40,6 +45,15 @@ const injectHtmlTags = (envUrls: string[]) => {
   let workSpaceTags: HtmlTagDescriptor[] = [];
   if (isProduction) {
     workSpaceTags = [
+      {
+        append: false,
+        tag: 'link',
+        attrs: {
+          crossorigin: 'anonymous',
+          rel: 'stylesheet',
+          inject: 'block.css',
+        },
+      },
       {
         append: false,
         tag: 'script',

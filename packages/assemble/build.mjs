@@ -45,10 +45,17 @@ const assemble = () => {
   // 查找 hash js 文件
   const files = readdirSync(blockPath);
   const blockjs = files.find((file) => file.endsWith(".js"));
+  const blockcss = files.find((file) => file.endsWith(".css"));
 
   copyFileSync(
     join(blockPath, blockjs),
     join(__dirname, `../../dist/${blockjs}`),
+    constants.COPYFILE_EXCL
+  );
+
+  copyFileSync(
+    join(blockPath, blockcss),
+    join(__dirname, `../../dist/${blockcss}`),
     constants.COPYFILE_EXCL
   );
 
@@ -61,6 +68,9 @@ const assemble = () => {
       `inject="block.js"`,
       //  TODO 判断 / 结尾
       `src="${serveBase}/${blockjs}"`
+    ).replace(
+      `inject="block.css"`,
+      `href="${serveBase}/${blockcss}"`
     );
     writeFileSync(htmlPath, newContent);
   });

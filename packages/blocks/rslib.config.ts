@@ -15,6 +15,7 @@ export default defineConfig({
     filenameHash: !isProduction,
     filename: {
       js: isProduction ? "block.[hash].js" : "[name].js",
+      css: isProduction ? "block.[hash].css" : "[name].css",
     },
     target: "web",
     externals: {},
