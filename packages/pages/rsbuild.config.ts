@@ -1,13 +1,14 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginVue } from '@rsbuild/plugin-vue';
 import { pluginHtmlMinifierTerser } from 'rsbuild-plugin-html-minifier-terser';
+import { pluginCssMinimizer } from '@rsbuild/plugin-css-minimizer';
 import { buildPages, injectHtmlTags, isProduction } from './rsbuild.tool';
 
 export default defineConfig({
   source: {
     entry: buildPages(['index', 'demo1', 'demo2']),
   },
-  plugins: [pluginVue(), pluginHtmlMinifierTerser()],
+  plugins: [pluginVue(), pluginHtmlMinifierTerser(), pluginCssMinimizer()],
   html: {
     template: './static/index.html',
     tags: injectHtmlTags([
@@ -16,6 +17,9 @@ export default defineConfig({
       'VUE_ROUTER_JS_URL',
       'ELEMENT_JS_URL',
     ]),
+  },
+  dev: {
+    lazyCompilation: true,
   },
   output: {
     externals: {
