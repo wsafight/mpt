@@ -3,22 +3,27 @@ import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 import { pluginCssMinimizer } from "@rsbuild/plugin-css-minimizer";
 import { pluginImageCompress } from "@rsbuild/plugin-image-compress";
-import { pluginAssetsRetry } from '@rsbuild/plugin-assets-retry';
+import { pluginIfdef } from './plugin';
 import { buildPages, injectHtmlTags, isProduction, config } from "./rsbuild.tool";
+
+const { base, assetsRetry } = config;
+
+
 
 export default defineConfig({
   source: {
     entry: buildPages(["index", "demo1", "demo2"]),
   },
   server: {
-    base: config.base,
+    base,
   },
   plugins: [
+    pluginIfdef({ env: process.env }),
     pluginVue(),
     pluginHtmlMinifierTerser(),
     pluginCssMinimizer(),
     pluginImageCompress(),
-    pluginAssetsRetry()
+    // pluginAssetsRetry(),
   ],
   html: {
     template: "./static/index.html",

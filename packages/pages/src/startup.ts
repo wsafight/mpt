@@ -7,7 +7,7 @@ import {
 } from 'vue-router';
 import App from './App.vue';
 import { axios } from '@mpt/blocks';
-// import '@mpt/blocks/index.css';
+import '@mpt/blocks/index.css';
 import './index.css';
 
 
