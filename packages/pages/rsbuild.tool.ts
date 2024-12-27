@@ -1,8 +1,11 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import type { HtmlTagDescriptor } from '@rsbuild/core';
 
-const configStr = readFileSync(join(__dirname, '../../mpt.config.json') , "utf-8");
+const configStr = readFileSync(
+  join(__dirname, '../../mpt.config.json'),
+  'utf-8',
+);
 export const config = JSON.parse(configStr);
 
 const buildPages = (pages: string[]) => {
@@ -23,25 +26,28 @@ const getTagTypeFromEnvUrl = (url: string): 'css' | 'js' => {
 
 // Inject asset from the `public` directory.
 const injectHtmlTags = (envUrls: string[]) => {
-  const globalTags = envUrls.reduce((tags: HtmlTagDescriptor[], envUrl: string) => {
-    const tagType = getTagTypeFromEnvUrl(envUrl);
-    tags.push({
-      append: false,
-      tag: tagType === 'css' ? 'link' : 'script',
-      attrs: {
-        crossorigin: 'anonymous',
-        ...(tagType === 'css'
-          ? {
-              href: process.env[envUrl],
-              rel: 'stylesheet',
-            }
-          : {
-              src: process.env[envUrl],
-            }),
-      },
-    });
-    return tags;
-  }, []);
+  const globalTags = envUrls.reduce(
+    (tags: HtmlTagDescriptor[], envUrl: string) => {
+      const tagType = getTagTypeFromEnvUrl(envUrl);
+      tags.push({
+        append: false,
+        tag: tagType === 'css' ? 'link' : 'script',
+        attrs: {
+          crossorigin: 'anonymous',
+          ...(tagType === 'css'
+            ? {
+                href: process.env[envUrl],
+                rel: 'stylesheet',
+              }
+            : {
+                src: process.env[envUrl],
+              }),
+        },
+      });
+      return tags;
+    },
+    [],
+  );
   let workSpaceTags: HtmlTagDescriptor[] = [];
   if (isProduction) {
     workSpaceTags = [

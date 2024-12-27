@@ -1,31 +1,27 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {
-    "dev": {
-      "cache": true
-    },
-    "build": {
-      "dependsOn": [
-        "^build"
-      ]
-    },
-    "preview": {
-      "dependsOn": [
-        "^build", "^preview"
-      ]
-    }
-  },
-  "defaultBase": "main",
-  "plugins": [
-    {
-      "plugin": "@nx/rsbuild",
-      "options": {
-        "buildTargetName": "rsbuild:build",
-        "devTargetName": "rsbuild:dev",
-        "previewTargetName": "rsbuild:preview",
-        "inspectTargetName": "inspect",
-        "typecheckTargetName": "typecheck"
-      }
-    }
-  ]
+	"$schema": "./node_modules/nx/schemas/nx-schema.json",
+	"targetDefaults": {
+		"dev": {
+			"cache": true
+		},
+		"build": {
+			"dependsOn": ["^build"]
+		},
+		"preview": {
+			"dependsOn": ["^build", "^preview"]
+		}
+	},
+	"defaultBase": "main",
+	"plugins": [
+		{
+			"plugin": "@nx/rsbuild",
+			"options": {
+				"buildTargetName": "rsbuild:build",
+				"devTargetName": "rsbuild:dev",
+				"previewTargetName": "rsbuild:preview",
+				"inspectTargetName": "inspect",
+				"typecheckTargetName": "typecheck"
+			}
+		}
+	]
 }

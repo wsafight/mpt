@@ -1,12 +1,12 @@
 import {
-  readdirSync,
-  rmSync,
-  cpSync,
-  existsSync,
-  copyFileSync,
-  constants,
-  readFileSync,
-  writeFileSync,
+	constants,
+	copyFileSync,
+	cpSync,
+	existsSync,
+	readFileSync,
+	readdirSync,
+	rmSync,
+	writeFileSync,
 } from "fs";
 import { join } from "path";
 
@@ -14,66 +14,67 @@ const __dirname = import.meta.dirname;
 
 const targetDir = join(__dirname, "../../dist");
 
-const configStr = readFileSync(join(__dirname, '../../mpt.config.json') , "utf-8");
+const configStr = readFileSync(
+	join(__dirname, "../../mpt.config.json"),
+	"utf-8",
+);
 const config = JSON.parse(configStr);
-
 
 const serveBase = config?.base;
 
 const removeDistDir = () => {
-  if (!existsSync(targetDir)) {
-    return;
-  }
-  rmSync(targetDir, { recursive: true });
+	if (!existsSync(targetDir)) {
+		return;
+	}
+	rmSync(targetDir, { recursive: true });
 };
 
 const copyPageFiles = () => {
-  cpSync(join(__dirname, "../pages/dist"), targetDir, { recursive: true });
+	cpSync(join(__dirname, "../pages/dist"), targetDir, { recursive: true });
 };
 
 // 组装 mpt 文件
 const assemble = () => {
-  console.log("开始组装");
-  // 如果文件存在，删除文件
-  removeDistDir();
+	console.log("开始组装");
+	// 如果文件存在，删除文件
+	removeDistDir();
 
-  // 拷贝页面文件
-  copyPageFiles();
+	// 拷贝页面文件
+	copyPageFiles();
 
-  // 处理 blocks
-  const blockPath = join(__dirname, "../blocks/dist");
-  // 查找 hash js 文件
-  const files = readdirSync(blockPath);
-  const blockjs = files.find((file) => file.endsWith(".js"));
-  const blockcss = files.find((file) => file.endsWith(".css"));
+	// 处理 blocks
+	const blockPath = join(__dirname, "../blocks/dist");
+	// 查找 hash js 文件
+	const files = readdirSync(blockPath);
+	const blockjs = files.find((file) => file.endsWith(".js"));
+	const blockcss = files.find((file) => file.endsWith(".css"));
 
-  copyFileSync(
-    join(blockPath, blockjs),
-    join(__dirname, `../../dist/${blockjs}`),
-    constants.COPYFILE_EXCL
-  );
+	copyFileSync(
+		join(blockPath, blockjs),
+		join(__dirname, `../../dist/${blockjs}`),
+		constants.COPYFILE_EXCL,
+	);
 
-  copyFileSync(
-    join(blockPath, blockcss),
-    join(__dirname, `../../dist/${blockcss}`),
-    constants.COPYFILE_EXCL
-  );
+	copyFileSync(
+		join(blockPath, blockcss),
+		join(__dirname, `../../dist/${blockcss}`),
+		constants.COPYFILE_EXCL,
+	);
 
-  const htmls = readdirSync(targetDir).filter((file) => file.endsWith(".html"));
-  console.log(htmls);
-  htmls.forEach((html) => {
-    const htmlPath = join(targetDir, html);
-    const content = readFileSync(htmlPath, "utf-8");
-    const newContent = content.replace(
-      `inject="block.js"`,
-      //  TODO 判断 / 结尾
-      `src="${serveBase}/${blockjs}"`
-    ).replace(
-      `inject="block.css"`,
-      `href="${serveBase}/${blockcss}"`
-    );
-    writeFileSync(htmlPath, newContent);
-  });
+	const htmls = readdirSync(targetDir).filter((file) => file.endsWith(".html"));
+	console.log(htmls);
+	htmls.forEach((html) => {
+		const htmlPath = join(targetDir, html);
+		const content = readFileSync(htmlPath, "utf-8");
+		const newContent = content
+			.replace(
+				`inject="block.js"`,
+				//  TODO 判断 / 结尾
+				`src="${serveBase}/${blockjs}"`,
+			)
+			.replace(`inject="block.css"`, `href="${serveBase}/${blockcss}"`);
+		writeFileSync(htmlPath, newContent);
+	});
 };
 
 assemble();

@@ -1,18 +1,20 @@
 {
-  "name": "mpt",
-  "version": "0.0.1",
-  "packageManager": "pnpm@9.12.3",
-  "scripts": {
-    "dev": "npx nx run-many -t  dev",
-    "build": "npx nx run-many -t build",
-    "preview": "npx nx run-many -t preview"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@rsbuild/core": "1.1.8",
-    "typescript": "5.7.2",
-    "nx": "20.3.0",
-    "@nx/rsbuild": "20.3.0",
-    "@types/node": "22.10.2"
-  }
+	"name": "mpt",
+	"version": "0.0.1",
+	"packageManager": "pnpm@9.12.3",
+	"scripts": {
+		"dev": "npx nx run-many -t  dev",
+		"build": "npx nx run-many -t build",
+		"preview": "npx nx run-many -t preview",
+		"check": "npx nx run-many -t check",
+		"format": "npx nx run-many -t format"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@rsbuild/core": "1.1.8",
+		"typescript": "5.7.2",
+		"nx": "20.3.0",
+		"@nx/rsbuild": "20.3.0",
+		"@types/node": "22.10.2"
+	}
 }
