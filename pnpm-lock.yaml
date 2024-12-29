@@ -38,6 +38,9 @@ importers:
 
   packages/blocks:
     dependencies:
+      loadjs:
+        specifier: 4.3.0
+        version: 4.3.0
       redaxios:
         specifier: 0.5.1
         version: 0.5.1
@@ -45,6 +48,9 @@ importers:
       '@rslib/core':
         specifier: 0.2.2
         version: 0.2.2(typescript@5.7.2)
+      '@types/loadjs':
+        specifier: '4.0.4 '
+        version: 4.0.4
 
   packages/layouts: {}
 
@@ -1079,6 +1085,9 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/loadjs@4.0.4':
+    resolution: {integrity: sha512-IrO82vQKb37H9R+CJYoKTJBlMcIcSCA64ZPIBrLScH2vHMgXLnXtLc76PyKKzdbkj/lRLIhoH+fFAZ0UvIP5Dw==}
+
   '@types/lodash-es@4.17.12':
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
 
@@ -1854,6 +1863,9 @@ packages:
   loader-runner@4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
+
+  loadjs@4.3.0:
+    resolution: {integrity: sha512-vNX4ZZLJBeDEOBvdr2v/F+0aN5oMuPu7JTqrMwp+DtgK+AryOlpy6Xtm2/HpNr+azEa828oQjOtWsB6iDtSfSQ==}
 
   lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
@@ -3790,6 +3802,8 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/loadjs@4.0.4': {}
+
   '@types/lodash-es@4.17.12':
     dependencies:
       '@types/lodash': 4.17.13
@@ -4594,6 +4608,8 @@ snapshots:
   lines-and-columns@2.0.3: {}
 
   loader-runner@4.3.0: {}
+
+  loadjs@4.3.0: {}
 
   lodash-es@4.17.21: {}
 

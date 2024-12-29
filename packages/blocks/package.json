@@ -19,10 +19,12 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "redaxios": "0.5.1"
+    "redaxios": "0.5.1",
+    "loadjs": "4.3.0"
   },
   "devDependencies": {
-    "@rslib/core": "0.2.2"
+    "@rslib/core": "0.2.2",
+    "@types/loadjs": "4.0.4 "
   },
   "private": true
 }
