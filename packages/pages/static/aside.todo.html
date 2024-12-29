@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+    <style>
+      body {
+        margin: 0;
+      }
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+        /*如果div设置了float,实际上父div是没有被撑起来的*/
+      }
+      .pg-header {
+        height: 48px;
+        background-color: #2459a2;
+        color: white;
+        line-height: 48px;
+        /*left: 0;*/
+      }
+      .pg-header .logo {
+        width: 200px;
+        background-color: aqua;
+        text-align: center;
+        /*height: 46px;*/
+      }
+      .pg-header .icon {
+        padding: 0 10px;
+      }
+      .pg-header .icon:hover {
+        background-color: thistle;
+      }
+      .pg-header .icon span {
+        display: inline-block;
+        padding: 2px 7px;
+        line-height: 1;
+        background-color: red;
+        border-radius: 50%;
+        font-size: 4px;
+      }
+      .pg-header .user:hover {
+        background-color: thistle;
+      }
+      .pg-header .user {
+        width: 160px;
+        margin-right: 60px;
+        background-color: wheat;
+        color: white;
+        height: 48px;
+      }
+
+      .pg-header .user .a img {
+        width: 40px;
+        height: 40px;
+        margin-top: 4px;
+        border-radius: 50%;
+      }
+      .pg-header .user .b {
+        z-index: 20;
+        position: absolute;
+        top: 46px;
+        right: 44px;
+        background-color: white;
+        color: black;
+        width: 150px;
+        display: none;
+      }
+      .pg-header .user:hover .b {
+        display: block;
+        /*经典：只要鼠标经过就显示下拉框，与.pg-header .user .b:hover 效果完全不一样*/
+      }
+      .pg-header .user .b a {
+        display: block;
+      }
+      .pg-content .menu {
+        position: absolute;
+        top: 48px;
+        left: 0;
+        bottom: 0;
+        width: 200px;
+        background-color: #dddddd;
+      }
+      .pg-content .content {
+        position: absolute;
+        top: 48px;
+        right: 0;
+        bottom: 0;
+        left: 200px;
+        overflow: auto;
+        z-index: 9; /*z-index是层级，谁大谁就在上层*/
+        background-color: cadetblue;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pg-header">
+      <div class="logo left">欢迎你</div>
+
+      <div class="user right" style="position: relative">
+        <a class="a" href="#">
+          <img src="i_name.jpg" />
+        </a>
+        <div class="b">
+          <a>我的资料</a>
+          <a>注销</a>
+        </div>
+      </div>
+      <div class="icon right">
+        <i class="fa fa-clipboard" aria-hidden="true"></i>
+        <span>5</span>
+      </div>
+      <div class="icon right">
+        <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <div class="pg-content">
+      <div class="menu left">这是菜单布局</div>
+      <div class="content right">
+        <div style="height: 10000px">这是主体内容布局</div>
+      </div>
+    </div>
+  </body>
+</html>

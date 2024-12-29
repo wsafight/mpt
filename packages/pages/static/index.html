@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel=icon href=./favicon.png>
-  </head>
-  <body>
-    <header
-      style="
-        height: 64px;
-        line-height: 64px;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 16px;
-        border-bottom: 1px solid #000;
-      " 
-    >
-      <div style="display: flex;align-items: center;">
-        <img src="./logo.png" alt="">
+
+<head>
+  <link rel=icon href=./favicon.png>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .layout-header {
+      height: 64px;
+      color: white;
+      line-height: 64px;
+      border-bottom: 1px solid #000;
+    }
+
+    .layout-content {
+      position: absolute;
+      top: 64px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: auto;
+    }
+
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="layout-header">
+    <div class="flex-between">
+      <div style="display: flex; align-items: center">
+        <img src="./logo.png" alt="" />
       </div>
       <nav>
         <a href="/mpt/#/">index</a>
@@ -24,8 +44,14 @@
         <a href="/mpt/demo2">demo2</a>
       </nav>
       <div>my</div>
-    </header>
+    </div>
+  </header>
+  <div class="layout-content">
     <main id="<%= mountId %>"></main>
-    <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-  </body>
+  </div>
+
+  <script src="//instant.page/5.2.0" type="module"
+    integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+</body>
+
 </html>
