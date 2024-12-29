@@ -1,10 +1,27 @@
 {
-	"name": "@mpt/mock",
-	"private": true,
-	"version": "1.0.0",
-	"scripts": {},
-	"dependencies": {
-		"mockjs": "1.1.0"
-	},
-	"devDependencies": {}
+  "name": "@mpt/mock",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "dev": "rslib build --watch --env-mode development",
+    "build": "rslib build --env-mode production",
+    "check": "biome check --write",
+    "format": "biome format --write"
+  },
+  "dependencies": {
+    "mockjs": "1.1.0"
+  },
+  "devDependencies": {
+    "@rslib/core": "0.2.2"
+  },
+  "private": true
 }

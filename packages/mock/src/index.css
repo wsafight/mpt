@@ -1,0 +1,14 @@
+@view-transition {
+  /* biome-ignore lint/correctness/noUnknownProperty: new */
+  navigation: auto;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.optimize {
+  will-change: transform;
+}
