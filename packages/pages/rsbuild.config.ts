@@ -30,6 +30,7 @@ export default defineConfig({
   ],
   html: {
     template: './static/index.html',
+    title: 'Mpt',
     tags: injectHtmlTags([
       'ELEMENT_CSS_URL',
       'VUE_JS_URL',

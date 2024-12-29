@@ -1,7 +1,7 @@
 import type { RsbuildPlugin } from '@rsbuild/core';
 
 export type PluginIfdefOptions = {
-  env?: Record<string, string>;
+  env?: Record<string, string | undefined>;
 };
 
 export const pluginIfdef = (
