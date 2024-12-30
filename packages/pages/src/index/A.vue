@@ -1,3 +1,6 @@
+<script>
+
+</script>
 <template>
   <div class="content" style="height: 20000px;">
     1111

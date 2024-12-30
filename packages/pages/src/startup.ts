@@ -1,4 +1,4 @@
-import { axios, loadjs } from '@mpt/blocks';
+import { axios } from '@mpt/blocks';
 import ElementPlus from 'element-plus';
 import { createApp } from 'vue';
 import {
@@ -7,10 +7,14 @@ import {
   createWebHashHistory,
 } from 'vue-router';
 import App from './App.vue';
+// #if NODE_ENV === 'development'
 import '@mpt/blocks/index.css';
+console.log('Debug version')
+// #endif
+
 import './index.css';
 
-console.log(axios, loadjs);
+console.log(axios);
 
 axios.get('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
   console.log(response.data);
