@@ -97,6 +97,9 @@ importers:
       '@rsbuild/plugin-vue':
         specifier: 1.0.5
         version: 1.0.5(@rsbuild/core@1.1.13)(vue@3.5.13(typescript@5.7.2))
+      preprocessor-directives-test:
+        specifier: 0.0.1
+        version: 0.0.1(@rspack/core@1.1.8(@swc/helpers@0.5.15))(webpack@5.97.1)
       rsbuild-plugin-html-minifier-terser:
         specifier: 1.1.1
         version: 1.1.1(@rsbuild/core@1.1.13)
@@ -2315,6 +2318,32 @@ packages:
   postcss@8.4.49:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
+
+  preprocessor-directives-test@0.0.1:
+    resolution: {integrity: sha512-Z94dKJt4RPvV/LaQ7CI9vUl9xX0oiNbVXq4b/4WqWcx7ct841/m9SZ6Z5mSGtcR/IgJrSwxF78BT5GEyFhh0+Q==}
+    peerDependencies:
+      '@nuxt/kit': ^3
+      '@nuxt/schema': ^3
+      '@rspack/core': '*'
+      esbuild: '*'
+      rollup: ^3
+      vite: '>=3'
+      webpack: ^4 || ^5
+    peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
+      '@nuxt/schema':
+        optional: true
+      '@rspack/core':
+        optional: true
+      esbuild:
+        optional: true
+      rollup:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
 
   pretty-format@29.7.0:
     resolution: {integrity: sha512-Pdlw/oPxN+aXdmM9R00JVC9WVFoCLTKJvDVLgmJ+qAffBMxsV85l/Lu7sNx4zSzPyoL2euImuEwHhOXdEgNFZQ==}
@@ -5208,6 +5237,15 @@ snapshots:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  preprocessor-directives-test@0.0.1(@rspack/core@1.1.8(@swc/helpers@0.5.15))(webpack@5.97.1):
+    dependencies:
+      '@ampproject/remapping': 2.3.0
+      magic-string: 0.30.17
+      unplugin: 2.1.2
+    optionalDependencies:
+      '@rspack/core': 1.1.8(@swc/helpers@0.5.15)
+      webpack: 5.97.1
 
   pretty-format@29.7.0:
     dependencies:

@@ -4,7 +4,7 @@ import { pluginImageCompress } from "@rsbuild/plugin-image-compress";
 import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 import AutoImport from "unplugin-auto-import/rspack";
-import PreprocessorDirectives from 'unplugin-preprocessor-directives/rspack'
+// import PreprocessorDirectives from 'unplugin-preprocessor-directives/rspack'
 import {
   buildPages,
   config,
