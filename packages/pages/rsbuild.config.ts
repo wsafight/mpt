@@ -11,6 +11,7 @@ import {
   injectHtmlTags,
   isProduction,
 } from "./rsbuild.tool";
+import { pluginIfdef } from "./plugin";
 
 const { base, assetsRetry } = config;
 
@@ -24,17 +25,19 @@ export default defineConfig({
   tools: {
     rspack: {
       plugins: [
+        // PreprocessorDirectives(),
         AutoImport(),
-        PreprocessorDirectives({include: ['src/**/*.ts', 'src/**/*.vue'] })
+        //
       ]
     }
   },
   plugins: [
-    // pluginIfdef({ env: process.env }),
+    pluginIfdef({ env: process.env }),
     pluginVue(),
     pluginHtmlMinifierTerser(),
     pluginCssMinimizer(),
     pluginImageCompress(),
+    // 视情况开启或者关闭
     // pluginAssetsRetry(),
   ],
   html: {
