@@ -12,6 +12,7 @@ import '@mpt/blocks/index.css';
 console.log('Debug version')
 // #endif
 
+import 'uno.css';
 import './index.css';
 
 console.log(axios);

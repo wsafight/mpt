@@ -5,6 +5,10 @@ import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 import AutoImport from "unplugin-auto-import/rspack";
 // import PreprocessorDirectives from 'unplugin-preprocessor-directives/rspack'
+import { pluginSass } from '@rsbuild/plugin-sass';
+import { UnoCSSRspackPlugin } from '@unocss/webpack/rspack';
+import { presetAttributify } from '@unocss/preset-attributify';
+import { presetUno } from '@unocss/preset-uno';
 import {
   buildPages,
   config,
@@ -26,10 +30,24 @@ export default defineConfig({
     rspack: {
       plugins: [
         // PreprocessorDirectives(),
-        AutoImport(),
-        //
-      ]
-    }
+        UnoCSSRspackPlugin({
+          presets: [presetUno(), presetAttributify()],
+        }),
+        AutoImport({
+          include: [
+            /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+            /\.vue$/,
+            /\.vue\?vue/, // .vue
+            /\.md$/, // .md
+          ],
+          imports: [
+            // presets
+            'vue',
+            'vue-router',
+          ]
+        }),
+      ],
+    },
   },
   plugins: [
     pluginIfdef({ env: process.env }),
@@ -37,6 +55,7 @@ export default defineConfig({
     pluginHtmlMinifierTerser(),
     pluginCssMinimizer(),
     pluginImageCompress(),
+    pluginSass()
     // 视情况开启或者关闭
     // pluginAssetsRetry(),
   ],

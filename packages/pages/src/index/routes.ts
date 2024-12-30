@@ -1,4 +1,4 @@
-import A from './A.vue';
+import A from './index.vue';
 
 export default [
   {
