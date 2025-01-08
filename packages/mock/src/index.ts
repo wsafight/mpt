@@ -1,8 +1,3 @@
+const data = {};
 
-const data = {
-
-}
-
-export {
-    data
-}
+export { data };

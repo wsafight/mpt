@@ -9,7 +9,7 @@ import {
 import App from './App.vue';
 // #if NODE_ENV === 'development'
 import '@mpt/blocks/index.css';
-console.log('Debug version')
+console.log('Debug version');
 // #endif
 
 import 'uno.css';

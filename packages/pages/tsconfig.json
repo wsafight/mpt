@@ -19,7 +19,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": { "vue-router": ["./node_modules/vue-router/dist/vue-router.d.ts"] }
+    "paths": {
+      "vue-router": ["./node_modules/vue-router/dist/vue-router.d.ts"]
+    }
   },
   "include": ["src", "./auto-imports.d.ts"]
 }

@@ -1,5 +1,5 @@
 <script setup>
-import TopPanel from './components/TopPanel.vue'
+import TopPanel from './components/TopPanel.vue';
 </script>
 <template>
   <div class="p-4" style="height: 20000px;">

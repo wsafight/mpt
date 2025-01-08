@@ -25,7 +25,6 @@ const PANE_LIST = [
     leftType: 'icon-file-paste',
   },
 ];
-
 </script>
 <template>
     <el-row :gutter="8">

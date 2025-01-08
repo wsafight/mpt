@@ -1,4 +1,4 @@
-import loadjs from "loadjs";
+import loadjs from 'loadjs';
 
 export interface JsLib {
   url: string;
@@ -7,7 +7,7 @@ export interface JsLib {
 
 const dynamicJsLibs: Record<string, JsLib> = {
   echarts: {
-    url: "//unpkg.com/echarts@5.6.0/dist/echarts.min.js",
+    url: '//unpkg.com/echarts@5.6.0/dist/echarts.min.js',
     wrapper() {
       return (window as any).echarts;
     },
@@ -17,13 +17,13 @@ const dynamicJsLibs: Record<string, JsLib> = {
 // todo 加载中未处理
 export const loadAssets = (assets: string | string[]) => {
   let inputIsArray = true;
-  if (typeof assets === "string") {
+  if (typeof assets === 'string') {
     assets = [assets];
     inputIsArray = false;
   }
   const notFound = assets.find((x) => !dynamicJsLibs[x]);
   if (notFound) {
-    throw new Error("Cannot found asset [" + notFound + "]");
+    throw new Error('Cannot found asset [' + notFound + ']');
   }
   const items = assets.map((name: string) => {
     const current = dynamicJsLibs[name];
@@ -43,13 +43,13 @@ export const loadAssets = (assets: string | string[]) => {
   // 都已经加载的场合
   if (!loadingItems.length) {
     return Promise.resolve(
-      inputIsArray ? items.map((x) => x.result) : items[0].result
+      inputIsArray ? items.map((x) => x.result) : items[0].result,
     );
   }
 
   return new Promise((resolve, reject) => {
     const urlsToLoad: string[] = loadingItems.map(
-      (item) => dynamicJsLibs[item.name].url
+      (item) => dynamicJsLibs[item.name].url,
     ) as string[];
     loadjs(urlsToLoad, {
       success: () => {
@@ -59,7 +59,7 @@ export const loadAssets = (assets: string | string[]) => {
         resolve(result);
       },
       error: function (urls) {
-        reject(new Error("loadjs Error"));
+        reject(new Error('loadjs Error'));
       },
     });
   });

@@ -1,5 +1,5 @@
-console.log("layout");
+console.log('layout');
 
 export const layout = () => {
-	console.log("layout22");
+  console.log('layout22');
 };

@@ -1,8 +1,9 @@
 {
-	"name": "@mpt/layouts",
-	"scripts": {
-		"dev": "node src/index.js",
-		"build": "node src/index.js"
-	},
-	"main": "src/index.js"
+  "name": "@mpt/layouts",
+  "scripts": {
+    "dev": "node src/index.js",
+    "build": "node src/index.js",
+    "format": "biome format --write"
+  },
+  "main": "src/index.js"
 }
