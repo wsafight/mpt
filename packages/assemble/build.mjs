@@ -1,80 +1,67 @@
+import { constants, copyFileSync } from "node:fs";
+import { join } from "node:path";
 import {
-	constants,
-	copyFileSync,
-	cpSync,
-	existsSync,
-	readFileSync,
-	readdirSync,
-	rmSync,
-	writeFileSync,
-} from "fs";
-import { join } from "path";
+  changeHtmlContentForBusiness,
+  changeHtmlContentForCommonFiles,
+  copyDir,
+  getAssetsPathFromDir,
+  readJsonFile,
+  removeDir,
+} from "./utils.mjs";
+
 
 const __dirname = import.meta.dirname;
 
-const targetDir = join(__dirname, "../../dist");
+// 打包目标文件夹
+const targetPath = join(__dirname, "../../dist");
 
-const configStr = readFileSync(
-	join(__dirname, "../../mpt.config.json"),
-	"utf-8",
-);
-const config = JSON.parse(configStr);
+// pages 文件打包完成路径
+const pagesPath = join(__dirname, "../pages/dist");
 
-const serveBase = config?.base;
+// block 文件打包完成路径
+const blocksPath = join(__dirname, "../blocks/dist");
 
-const removeDistDir = () => {
-	if (!existsSync(targetDir)) {
-		return;
-	}
-	rmSync(targetDir, { recursive: true });
-};
-
-const copyPageFiles = () => {
-	cpSync(join(__dirname, "../pages/dist"), targetDir, { recursive: true });
-};
+// 配置文件，使用 find-up 太慢了
+const configPath = join(__dirname, "../../mpt.config.json");
 
 // 组装 mpt 文件
 const assemble = () => {
-	console.log("开始组装");
-	// 如果文件存在，删除文件
-	removeDistDir();
+  // 如果文件存在，删除文件
+  removeDir(targetPath);
 
-	// 拷贝页面文件
-	copyPageFiles();
+  // 拷贝页面文件
+  copyDir(pagesPath, targetPath);
 
-	// 处理 blocks
-	const blockPath = join(__dirname, "../blocks/dist");
-	// 查找 hash js 文件
-	const files = readdirSync(blockPath);
-	const blockjs = files.find((file) => file.endsWith(".js"));
-	const blockcss = files.find((file) => file.endsWith(".css"));
+  // 获取配置文件，配置项待完善
+  const config = readJsonFile(configPath);
 
-	copyFileSync(
-		join(blockPath, blockjs),
-		join(__dirname, `../../dist/${blockjs}`),
-		constants.COPYFILE_EXCL,
-	);
+  const { cssPath: blockCssPath, jsPath: blockJsPath } = getAssetsPathFromDir(blocksPath);
 
-	copyFileSync(
-		join(blockPath, blockcss),
-		join(__dirname, `../../dist/${blockcss}`),
-		constants.COPYFILE_EXCL,
-	);
+  // 拷贝“块”文件
+  copyFileSync(
+    join(blocksPath, blockJsPath),
+    join(__dirname, `../../dist/${blockJsPath}`),
+    constants.COPYFILE_EXCL
+  );
 
-	const htmls = readdirSync(targetDir).filter((file) => file.endsWith(".html"));
-	htmls.forEach((html) => {
-		const htmlPath = join(targetDir, html);
-		const content = readFileSync(htmlPath, "utf-8");
-		const blockJsStr = join(serveBase, blockjs)
-		const blockCssStr = join(serveBase, blockjs)
-		const newContent = content
-			.replace(
-				`inject="block.js"`,
-				`src="${blockJsStr}"`,
-			)
-			.replace(`inject="block.css"`, `href="${blockCssStr}"`);
-		writeFileSync(htmlPath, newContent);
-	});
+  copyFileSync(
+    join(blocksPath, blockCssPath),
+    join(__dirname, `../../dist/${blockCssPath}`),
+    constants.COPYFILE_EXCL
+  );
+
+  const serveBase = config?.base;
+
+  // 修改 html 页面 - 通用文件
+  changeHtmlContentForCommonFiles({
+	targetDir: targetPath,
+    serveBase,
+    blockCssPath,
+    blockJsPath,
+  });
+
+  // 修改 html 页面 - 业务处理
+  changeHtmlContentForBusiness();
 };
 
 assemble();
