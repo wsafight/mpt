@@ -62,17 +62,17 @@ const assemble = () => {
 	);
 
 	const htmls = readdirSync(targetDir).filter((file) => file.endsWith(".html"));
-	console.log(htmls);
 	htmls.forEach((html) => {
 		const htmlPath = join(targetDir, html);
 		const content = readFileSync(htmlPath, "utf-8");
+		const blockJsStr = join(serveBase, blockjs)
+		const blockCssStr = join(serveBase, blockjs)
 		const newContent = content
 			.replace(
 				`inject="block.js"`,
-				//  TODO 判断 / 结尾
-				`src="${serveBase}/${blockjs}"`,
+				`src="${blockJsStr}"`,
 			)
-			.replace(`inject="block.css"`, `href="${serveBase}/${blockcss}"`);
+			.replace(`inject="block.css"`, `href="${blockCssStr}"`);
 		writeFileSync(htmlPath, newContent);
 	});
 };
