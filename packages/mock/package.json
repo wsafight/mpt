@@ -21,7 +21,7 @@
     "mockjs": "1.1.0"
   },
   "devDependencies": {
-    "@rslib/core": "0.2.2"
+    "@rslib/core": "0.6.3"
   },
   "private": true
 }

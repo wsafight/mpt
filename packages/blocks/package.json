@@ -23,7 +23,7 @@
     "loadjs": "4.3.0"
   },
   "devDependencies": {
-    "@rslib/core": "0.2.2",
+    "@rslib/core": "0.6.3",
     "@types/loadjs": "4.0.4 "
   },
   "private": true
