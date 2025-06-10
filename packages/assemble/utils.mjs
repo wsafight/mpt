@@ -7,11 +7,11 @@ import {
   readdirSync,
   rmSync,
   writeFileSync,
-} from "fs";
-import { join } from "path";
+} from 'fs';
+import { join } from 'path';
 
 const readJsonFile = (jsonPath) => {
-  const configContent = readFileSync(jsonPath, "utf-8");
+  const configContent = readFileSync(jsonPath, 'utf-8');
   try {
     return JSON.parse(configContent);
   } catch (err) {
@@ -33,8 +33,8 @@ const copyDir = (sourcePath, targetPath) => {
 const getAssetsPathFromDir = (path) => {
   // 查找 hash js 文件
   const files = readdirSync(path);
-  const jsPath = files.find((file) => file.endsWith(".js"));
-  const cssPath = files.find((file) => file.endsWith(".css"));
+  const jsPath = files.find((file) => file.endsWith('.js'));
+  const cssPath = files.find((file) => file.endsWith('.css'));
   return { jsPath, cssPath };
 };
 
@@ -45,12 +45,12 @@ const changeHtmlContentForCommonFiles = ({
   blockCssPath,
 }) => {
   const htmlList = readdirSync(targetDir).filter((file) =>
-    file.endsWith(".html")
+    file.endsWith('.html'),
   );
 
   htmlList.forEach((html) => {
     const htmlPath = join(targetDir, html);
-    const content = readFileSync(htmlPath, "utf-8");
+    const content = readFileSync(htmlPath, 'utf-8');
 
     const blockJsStr = join(serveBase, blockJsPath);
     const blockCssStr = join(serveBase, blockCssPath);

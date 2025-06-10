@@ -1,11 +1,11 @@
 {
-	"name": "@mpt/assemble",
-	"scripts": {
-		"build": "node build.mjs",
-		"preview": "node preview.mjs"
-	},
-	"dependencies": {
-		"@mpt/layouts": "workspace:*",
-		"@mpt/pages": "workspace:*"
-	}
+  "name": "@mpt/assemble",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node preview.mjs"
+  },
+  "dependencies": {
+    "@mpt/layouts": "workspace:*",
+    "@mpt/pages": "workspace:*"
+  }
 }

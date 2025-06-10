@@ -1,5 +1,5 @@
-import { constants, copyFileSync } from "node:fs";
-import { join } from "node:path";
+import { constants, copyFileSync } from 'node:fs';
+import { join } from 'node:path';
 import {
   changeHtmlContentForBusiness,
   changeHtmlContentForCommonFiles,
@@ -7,22 +7,21 @@ import {
   getAssetsPathFromDir,
   readJsonFile,
   removeDir,
-} from "./utils.mjs";
-
+} from './utils.mjs';
 
 const __dirname = import.meta.dirname;
 
 // 打包目标文件夹
-const targetPath = join(__dirname, "../../dist");
+const targetPath = join(__dirname, '../../dist');
 
 // pages 文件打包完成路径
-const pagesPath = join(__dirname, "../pages/dist");
+const pagesPath = join(__dirname, '../pages/dist');
 
 // block 文件打包完成路径
-const blocksPath = join(__dirname, "../blocks/dist");
+const blocksPath = join(__dirname, '../blocks/dist');
 
 // 配置文件，使用 find-up 太慢了
-const configPath = join(__dirname, "../../mpt.config.json");
+const configPath = join(__dirname, '../../mpt.config.json');
 
 // 组装 mpt 文件
 const assemble = () => {
@@ -35,26 +34,27 @@ const assemble = () => {
   // 获取配置文件，配置项待完善
   const config = readJsonFile(configPath);
 
-  const { cssPath: blockCssPath, jsPath: blockJsPath } = getAssetsPathFromDir(blocksPath);
+  const { cssPath: blockCssPath, jsPath: blockJsPath } =
+    getAssetsPathFromDir(blocksPath);
 
   // 拷贝“块”文件
   copyFileSync(
     join(blocksPath, blockJsPath),
     join(__dirname, `../../dist/${blockJsPath}`),
-    constants.COPYFILE_EXCL
+    constants.COPYFILE_EXCL,
   );
 
   copyFileSync(
     join(blocksPath, blockCssPath),
     join(__dirname, `../../dist/${blockCssPath}`),
-    constants.COPYFILE_EXCL
+    constants.COPYFILE_EXCL,
   );
 
   const serveBase = config?.base;
 
   // 修改 html 页面 - 通用文件
   changeHtmlContentForCommonFiles({
-	targetDir: targetPath,
+    targetDir: targetPath,
     serveBase,
     blockCssPath,
     blockJsPath,
